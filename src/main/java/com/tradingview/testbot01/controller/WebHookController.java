@@ -21,4 +21,11 @@ public class WebHookController {
         return ResponseEntity.ok("Webhook received and processed");
     }
 
+
+
+    @PostMapping("/webhookTest")
+    public ResponseEntity<String> receiveWebhookTest(String alert) {
+        System.out.println("alert = " + alert);
+        return ResponseEntity.ok("alert");
+    }
 }
