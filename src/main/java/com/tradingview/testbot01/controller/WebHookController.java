@@ -16,6 +16,8 @@ public class WebHookController {
 
     @PostMapping("/webhook")
     public ResponseEntity<String> receiveWebhook(@RequestBody TradingViewAlert alert) {
+
+
         alertService.processAlert(alert);
         return ResponseEntity.ok("Webhook received and processed");
     }
