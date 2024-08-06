@@ -33,7 +33,7 @@ jobs:
           scp -i private_key -o StrictHostKeyChecking=no build/libs/*.jar ${USER}@${HOST}:~/app/
           ssh -i private_key -o StrictHostKeyChecking=no ${USER}@${HOST} '
             sudo systemctl stop springboot-app
-            sudo mv ~/app/*.jar ~/app/app.jar
+            sudo mv ~/app/*.jar ~/app
             chmod +x ~/app/app.jar
             sudo systemctl start springboot-app
           '
