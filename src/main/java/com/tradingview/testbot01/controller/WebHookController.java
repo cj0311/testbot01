@@ -23,7 +23,7 @@ public class WebHookController {
 
 
 
-    @PostMapping("/webhookTest")
+    @PostMapping("/webhooktest")
     public ResponseEntity<String> receiveWebhookTest(String alert) {
         System.out.println("alert = " + alert);
         return ResponseEntity.ok("alert");

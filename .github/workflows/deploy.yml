@@ -34,6 +34,6 @@ jobs:
           ssh -i private_key -o StrictHostKeyChecking=no ${USER}@${HOST} '
             sudo systemctl stop springboot-app
             sudo mv ~/app/*.jar ~/app/app.jar
-            chmod +x app.jar
+            chmod +x ~/app/app.jar
             sudo systemctl start springboot-app
           '
