@@ -1,20 +1,28 @@
 package com.tradingview.testbot01.service;
 
 import com.tradingview.testbot01.domain.TradingViewAlert;
+import com.tradingview.testbot01.repository.AlertRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
+@RequiredArgsConstructor
 @Service
 public class AlertService {
 
     private static final Logger logger = LoggerFactory.getLogger(AlertService.class);
 
+    private final AlertRepository alertRepository;
+
     public void processAlert(TradingViewAlert alert) {
         // Log the received alert
         logger.info("Received alert: {}", alert);
+        alertRepository.addAlert(alert);
 
         // Here you can add your trading logic
         // For example, you might want to place an order based on the alert
@@ -33,5 +41,9 @@ public class AlertService {
     private void placeSellOrder(TradingViewAlert alert) {
         // Implement your sell order logic here
         logger.info("Placing sell order for {} at price {}", alert.getSymbol(), alert.getPrice());
+    }
+    public List<TradingViewAlert> getRecentAlerts(int limit) {
+        return alertRepository.getRecentAlerts(limit);
+
     }
 }

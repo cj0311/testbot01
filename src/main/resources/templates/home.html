@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Recent TradingView Alerts</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1>Recent TradingView Alerts</h1>
+<table>
+    <tr>
+        <th>Symbol</th>
+        <th>Action</th>
+        <th>Price</th>
+        <th>Strategy</th>
+    </tr>
+    <tr th:each="alert : ${alerts}">
+        <td th:text="${alert.symbol}"></td>
+        <td th:text="${alert.action}"></td>
+        <td th:text="${alert.price}"></td>
+        <td th:text="${alert.strategy}"></td>
+    </tr>
+</table>
+</body>
+</html>

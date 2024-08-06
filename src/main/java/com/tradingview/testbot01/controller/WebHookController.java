@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class WebHookController {
 
-    private AlertService alertService;
+    private final AlertService alertService;
 
     @PostMapping("/webhook")
     public ResponseEntity<String> receiveWebhook(@RequestBody TradingViewAlert alert) {
