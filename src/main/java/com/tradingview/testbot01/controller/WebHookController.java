@@ -26,7 +26,7 @@ public class WebHookController {
 
 
     @PostMapping("/webhooktest")
-    public ResponseEntity<String> receiveWebhookTest(String alert) {
+    public ResponseEntity<String> receiveWebhookTest(@RequestBody String alert) {
         System.out.println("alert = " + alert);
         log.info("alert message : "+ alert);
         return ResponseEntity.ok("alert");
