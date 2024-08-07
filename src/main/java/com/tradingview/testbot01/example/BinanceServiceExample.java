@@ -38,7 +38,10 @@ public class BinanceServiceExample {
 
         log.info("base = " + base + ", quote = " + quote);
         MarketDataService marketDataService = binanceExchange.getMarketDataService();
+
+        log.info("1");
         Instrument pair = new CurrencyPair(base, quote);
+        log.info("2");
 
         Ticker ticker = marketDataService.getTicker(pair);
         log.info(ticker.toString());
