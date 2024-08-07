@@ -6,6 +6,7 @@ import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.trade.MarketOrder;
+import org.knowm.xchange.instrument.Instrument;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 import org.knowm.xchange.service.trade.TradeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class BinanceServiceExample {
 
         log.info("base = " + base + ", quote = " + quote);
         MarketDataService marketDataService = binanceExchange.getMarketDataService();
-        CurrencyPair pair = new CurrencyPair(base, quote);
+        Instrument pair = new CurrencyPair(base, quote);
 
         Ticker ticker = marketDataService.getTicker(pair);
         log.info(ticker.toString());
