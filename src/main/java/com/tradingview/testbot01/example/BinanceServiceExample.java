@@ -23,6 +23,7 @@ public class BinanceServiceExample {
     private Exchange binanceExchange;
 
     public String placeMarketOrder(String base, String quote, Order.OrderType orderType, BigDecimal amount) throws IOException {
+        log.info("base = " + base + ", quote = " + quote + ", orderType = " + orderType + ", amount = " + amount);
         TradeService tradeService = binanceExchange.getTradeService();
         log.info("1");
         Instrument pair = new CurrencyPair(base, quote);
