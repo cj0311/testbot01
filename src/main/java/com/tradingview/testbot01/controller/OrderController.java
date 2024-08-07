@@ -6,6 +6,7 @@ import com.tradingview.testbot01.domain.OrderResult;
 import com.tradingview.testbot01.domain.TradingViewOrder;
 import com.tradingview.testbot01.service.OrderService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.knowm.xchange.dto.trade.MarketOrder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api")
 @AllArgsConstructor
+@Slf4j
 public class OrderController {
 
     private OrderService orderService;
@@ -29,7 +31,7 @@ public class OrderController {
     public ResponseEntity<String> processOrder(@RequestBody String payload) {
         try {
 
-            System.out.println("alertMessage = " + payload);
+            log.info("alertMessage = " + payload);
             Map<String, Object> orderMap = objectMapper.readValue(payload, Map.class);
             TradingViewOrder order = convertToTradingViewOrder(orderMap);
             OrderResult result = orderService.processOrder(order);
