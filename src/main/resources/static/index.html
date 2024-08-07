@@ -1,1 +1,32 @@
-hello world!
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recent Logs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        pre {
+            white-space: pre-wrap;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+<h1>Recent Logs</h1>
+<pre id="logs">Loading...</pre>
+<script>
+    fetch('/api/logs')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('logs').textContent = data.join('\n');
+        })
+        .catch(error => {
+            document.getElementById('logs').textContent = 'Failed to load logs: ' + error;
+        });
+</script>
+</body>
+</html>
