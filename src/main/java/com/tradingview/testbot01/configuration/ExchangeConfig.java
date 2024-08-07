@@ -16,33 +16,23 @@ import java.util.HashMap;
 @Configuration
 public class ExchangeConfig {
 
-    private Environment env;
+    private final Environment env;
+    private final RetryUtil retryUtil;
 
-//    @Value("${upbit.api.key}")
-//    private String upbitApiKey;
-//
-//    @Value("${upbit.secret.key}")
-//    private String upbitSecretKey;
-
-    @Bean
-    public BinancePlatform binancePlatform(RetryUtil retryUtil) {
-
-//        String binanceApiKey = env.getProperty("BINANCE_API_KEY");
-//        String binanceSecretKey = env.getProperty("BINANCE_SECRET");
-        return new BinancePlatform(env,retryUtil);
+    public ExchangeConfig(Environment env, RetryUtil retryUtil) {
+        this.env = env;
+        this.retryUtil = retryUtil;
     }
 
-//    @Bean
-//    public UpbitPlatform upbitPlatform(RetryUtil retryUtil) {
-//        return new UpbitPlatform(upbitApiKey, upbitSecretKey, retryUtil);
-//    }
+    @Bean
+    public BinancePlatform binancePlatform() {
+        return new BinancePlatform(env, retryUtil);
+    }
 
     @Bean
-    public TradingPlatformService tradingPlatformService(BinancePlatform binancePlatform){
-//            , UpbitPlatform upbitPlatform) {
+    public TradingPlatformService tradingPlatformService(BinancePlatform binancePlatform) {
         Map<String, TradingPlatform> platforms = new HashMap<>();
         platforms.put("BINANCE", binancePlatform);
-//        platforms.put("UPBIT", upbitPlatform);
         return new TradingPlatformService(platforms);
     }
 }
