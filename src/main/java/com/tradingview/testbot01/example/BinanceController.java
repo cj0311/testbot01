@@ -38,7 +38,24 @@ public class BinanceController {
             String base = orderRequest.getBase();
             String quote = orderRequest.getQuote();
             log.info("222");
-            Order.OrderType side = Order.OrderType.valueOf(orderRequest.getSide().toUpperCase());
+
+            Order.OrderType side;
+            switch (orderRequest.getSide().toLowerCase()) {
+                case "bid":
+                    side = Order.OrderType.BID;
+                    break;
+                case "ask":
+                    side = Order.OrderType.ASK;
+                    break;
+                case "exit_bid":
+                    side = Order.OrderType.EXIT_BID;
+                    break;
+                case "exit_ask":
+                    side = Order.OrderType.EXIT_ASK;
+                    break;
+                default:
+                    return "Invalid order side: " + orderRequest.getSide();
+            }
             log.info("side.toString() : " + side.toString());
             BigDecimal amount = new BigDecimal(orderRequest.getAmount());
             log.info("amount = " + amount);

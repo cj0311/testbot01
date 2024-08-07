@@ -6,7 +6,7 @@ import lombok.Data;
 public class OrderRequest {
     private String base;
     private String quote;
-    private String side;
+    private String side;  // e.g., "bid", "ask", "exit_bid", "exit_ask"
     private String amount;
 
 }
