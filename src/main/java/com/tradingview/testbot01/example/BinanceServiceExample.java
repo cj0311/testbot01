@@ -34,10 +34,13 @@ public class BinanceServiceExample {
 
 
     public BigDecimal getTickerPrice(String base, String quote) throws IOException {
+
+        log.info("base = " + base + ", quote = " + quote);
         MarketDataService marketDataService = binanceExchange.getMarketDataService();
         CurrencyPair pair = new CurrencyPair(base, quote);
 
         Ticker ticker = marketDataService.getTicker(pair);
+        log.info(ticker.toString());
         return ticker.getLast();
     }
 }
