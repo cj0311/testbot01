@@ -39,6 +39,10 @@ dependencies {
 	implementation 'org.apache.commons:commons-lang3:3.12.0'
 	implementation 'org.knowm.xchange:xchange-core:5.1.1'
 	implementation 'org.knowm.xchange:xchange-binance:5.1.1'
+	implementation 'org.springframework.retry:spring-retry'
+	implementation 'org.springframework:spring-aspects'
+	implementation 'commons-codec:commons-codec'
+
 }
 
 jar {
