@@ -21,7 +21,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'mysql:mysql-connector-java:8.0.33'
 //	implementation 'mysql:mysql-connector-java'
-	implementation 'org.knowm.xchange:xchange-core:5.1.1'
+	implementation 'org.knowm.xchange:xchange-core'
 	implementation 'org.knowm.xchange:xchange-binance:5.1.1'
 	implementation 'org.springframework.retry:spring-retry'
 	implementation 'org.springframework:spring-aspects'
