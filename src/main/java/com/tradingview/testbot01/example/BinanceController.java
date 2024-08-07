@@ -37,9 +37,11 @@ public class BinanceController {
             OrderRequest orderRequest = objectMapper.readValue(orderDetails, OrderRequest.class);
             String base = orderRequest.getBase();
             String quote = orderRequest.getQuote();
+            log.info("222");
             Order.OrderType side = Order.OrderType.valueOf(orderRequest.getSide().toUpperCase());
+            log.info("side.toString() : " + side.toString());
             BigDecimal amount = new BigDecimal(orderRequest.getAmount());
-
+            log.info("amount = " + amount);
             return binanceServiceExample.placeMarketOrder(base, quote, side, amount);
         } catch (IOException e) {
             return "Error placing order: " + e.getMessage();
