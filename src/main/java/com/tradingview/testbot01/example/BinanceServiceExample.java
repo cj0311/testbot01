@@ -24,9 +24,11 @@ public class BinanceServiceExample {
 
     public String placeMarketOrder(String base, String quote, Order.OrderType orderType, BigDecimal amount) throws IOException {
         TradeService tradeService = binanceExchange.getTradeService();
-        CurrencyPair pair = new CurrencyPair(base, quote);
+        log.info("1");
+        Instrument pair = new CurrencyPair(base, quote);
 
         MarketOrder marketOrder = new MarketOrder(orderType, amount, pair);
+        log.info("2");
         String tradeMsg = tradeService.placeMarketOrder(marketOrder);
         log.info(tradeMsg);
 //        return tradeService.placeMarketOrder(marketOrder).getId();
@@ -39,9 +41,7 @@ public class BinanceServiceExample {
         log.info("base = " + base + ", quote = " + quote);
         MarketDataService marketDataService = binanceExchange.getMarketDataService();
 
-        log.info("1");
         Instrument pair = new CurrencyPair(base, quote);
-        log.info("2");
 
         Ticker ticker = marketDataService.getTicker(pair);
         log.info(ticker.toString());
