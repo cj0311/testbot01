@@ -28,6 +28,8 @@ public class OrderController {
     @PostMapping("/order")
     public ResponseEntity<String> processOrder(@RequestBody String payload) {
         try {
+
+            System.out.println("alertMessage = " + payload);
             Map<String, Object> orderMap = objectMapper.readValue(payload, Map.class);
             TradingViewOrder order = convertToTradingViewOrder(orderMap);
             OrderResult result = orderService.processOrder(order);
