@@ -59,8 +59,8 @@ jar {
 //	}
 //}
 //
-
-tasks.named("test") {
+//
+test {
 	useJUnitPlatform()
-	systemProperty 'spring.aot.enabled', 'false'
+	systemProperty('spring.aot.enabled', false)
 }
