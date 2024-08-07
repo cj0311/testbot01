@@ -3,7 +3,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.knowm.xchange.dto.Order;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -16,7 +15,7 @@ import java.math.BigDecimal;
 public class BinanceController {
 
 
-    private BinanceService binanceService;
+    private BinanceServiceExample binanceServiceExample;
     private ObjectMapper objectMapper;
 //
 //    @PostMapping("/order")
@@ -41,7 +40,7 @@ public class BinanceController {
             Order.OrderType side = Order.OrderType.valueOf(orderRequest.getSide().toUpperCase());
             BigDecimal amount = new BigDecimal(orderRequest.getAmount());
 
-            return binanceService.placeMarketOrder(base, quote, side, amount);
+            return binanceServiceExample.placeMarketOrder(base, quote, side, amount);
         } catch (IOException e) {
             return "Error placing order: " + e.getMessage();
         }
@@ -55,7 +54,7 @@ public class BinanceController {
             String base = tickerRequest.getBase();
             String quote = tickerRequest.getQuote();
 
-            BigDecimal price = binanceService.getTickerPrice(base, quote);
+            BigDecimal price = binanceServiceExample.getTickerPrice(base, quote);
             return "Last price for " + base + "/" + quote + ": " + price.toPlainString();
         } catch (IOException e) {
             return "Error fetching ticker price: " + e.getMessage();

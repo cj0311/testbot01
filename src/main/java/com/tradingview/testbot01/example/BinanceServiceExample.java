@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 
 @Service
 @Slf4j
-public class BinanceService {
+public class BinanceServiceExample {
 
     @Autowired
     private Exchange binanceExchange;
