@@ -3,7 +3,7 @@ package com.tradingview.testbot01.service;
 import com.tradingview.testbot01.domain.OrderResult;
 import com.tradingview.testbot01.domain.TradingViewOrder;
 import com.tradingview.testbot01.exchange.TradingPlatform;
-import com.tradingview.testbot01.exception.TradingExceptions.InvalidOrderException;
+import com.tradingview.testbot01.exception.TradingExceptions.OrderExecutionException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -56,9 +56,8 @@ public class OrderServiceTest {
         order.setExchange("UNKNOWN");
 
         when(platformService.getPlatform("UNKNOWN")).thenReturn(tradingPlatform);
+        when(tradingPlatform.createOrder(order)).thenThrow(new UnsupportedOperationException("Unsupported asset type"));
 
-        assertThrows(InvalidOrderException.class, () -> orderService.processOrder(order));
+        assertThrows(OrderExecutionException.class, () -> orderService.processOrder(order));
     }
-
-    // Add more tests for other scenarios...
 }
