@@ -12,8 +12,7 @@ import java.io.IOException;
 import java.io.IOException;
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/logs")
+@Controller
 public class LogController {
 
     @Autowired
