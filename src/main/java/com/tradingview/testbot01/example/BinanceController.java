@@ -1,6 +1,7 @@
 package com.tradingview.testbot01.example;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.knowm.xchange.dto.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import java.math.BigDecimal;
 
 @RestController
 @AllArgsConstructor
+@Slf4j
 @RequestMapping("/api/binance")
 public class BinanceController {
 
@@ -32,7 +34,7 @@ public class BinanceController {
 
     @PostMapping("/order")
     public String placeOrder(@RequestBody String orderDetails) {
-        try {
+        try {log.info("orderDetails : " + orderDetails);
             OrderRequest orderRequest = objectMapper.readValue(orderDetails, OrderRequest.class);
             String base = orderRequest.getBase();
             String quote = orderRequest.getQuote();
@@ -48,6 +50,7 @@ public class BinanceController {
     @PostMapping("/ticker")
     public String getTickerPrice(@RequestBody String tickerDetails) {
         try {
+            log.info("tickerDetails : " + tickerDetails);
             TickerRequest tickerRequest = objectMapper.readValue(tickerDetails, TickerRequest.class);
             String base = tickerRequest.getBase();
             String quote = tickerRequest.getQuote();
