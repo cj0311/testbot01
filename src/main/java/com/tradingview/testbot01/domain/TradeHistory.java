@@ -6,21 +6,21 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "TRADING_VIEW_ALERTS")
-public class TradingViewAlert {
+@Table(name = "trade_history")
+public class TradeHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String symbol;
-    private String interval;
-    private String strategy;
-    private String action;
+    private String side;
+    private double amount;
     private double price;
-    private LocalDateTime createdAt;
+    private String orderId;
+    private LocalDateTime tradeTime;
 
     @PrePersist
     protected void onCreate() {
-        createdAt = LocalDateTime.now();
+        tradeTime = LocalDateTime.now();
     }
 }
