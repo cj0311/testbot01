@@ -2,23 +2,13 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.2'
 	id 'io.spring.dependency-management' version '1.1.6'
-//	id 'org.hibernate.orm' version '6.5.2.Final'
-//	id 'org.graalvm.buildtools.native' version '0.10.2'
 }
 
 group = 'com.tradingview'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
-}
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+	sourceCompatibility = JavaVersion.VERSION_21
 }
 
 repositories {
@@ -26,45 +16,22 @@ repositories {
 }
 
 dependencies {
-//	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
-//	implementation 'com.binance.api:binance-api-client:1.0.1'
-	implementation 'org.apache.commons:commons-lang3:3.12.0'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'mysql:mysql-connector-java:8.0.33'
 	implementation 'org.knowm.xchange:xchange-core:5.1.1'
 	implementation 'org.knowm.xchange:xchange-binance:5.1.1'
 	implementation 'org.springframework.retry:spring-retry'
 	implementation 'org.springframework:spring-aspects'
 	implementation 'commons-codec:commons-codec'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'mysql:mysql-connector-java:8.0.33'
 
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-jar {
-	enabled=false
-
-}
-//
-//hibernate {
-//	enhancement {
-//		enableAssociationManagement = true
-//	}
-//}
-//
-// AOT 처리 비활성화
-tasks.named("processAot") {
-	enabled = false
-}
-//
 test {
 	useJUnitPlatform()
-//	systemProperty('spring.aot.enabled', false)
 }
