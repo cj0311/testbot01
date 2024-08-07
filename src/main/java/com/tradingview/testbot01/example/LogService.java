@@ -1,4 +1,4 @@
-package com.tradingview.testbot01.controller;
+package com.tradingview.testbot01.example;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
