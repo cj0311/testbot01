@@ -7,7 +7,6 @@ import com.tradingview.testbot01.domain.TradingViewOrder;
 import com.tradingview.testbot01.service.OrderService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.knowm.xchange.dto.trade.MarketOrder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

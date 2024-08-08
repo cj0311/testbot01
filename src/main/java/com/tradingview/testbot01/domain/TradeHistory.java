@@ -5,8 +5,8 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-@Entity
-@Table(name = "trade_history")
+//@Entity
+//@Table(name = "trade_history")
 public class TradeHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

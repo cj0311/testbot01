@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticker Information</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Ticker Information</h1>
+    <form action="/binance/ticker" method="get" class="mb-4">
+        <div class="input-group">
+            <input type="text" class="form-control" name="symbol" placeholder="Symbol (e.g., BTC/USDT)" required>
+            <button type="submit" class="btn btn-primary">Get Ticker</button>
+        </div>
+    </form>
+    <div th:if="${ticker}">
+        <h2 th:text="${ticker.currencyPair}"></h2>
+        <table class="table">
+            <tr>
+                <th>Last Price</th>
+                <td th:text="${ticker.last}"></td>
+            </tr>
+            <tr>
+                <th>Bid</th>
+                <td th:text="${ticker.bid}"></td>
+            </tr>
+            <tr>
+                <th>Ask</th>
+                <td th:text="${ticker.ask}"></td>
+            </tr>
+            <tr>
+                <th>High</th>
+                <td th:text="${ticker.high}"></td>
+            </tr>
+            <tr>
+                <th>Low</th>
+                <td th:text="${ticker.low}"></td>
+            </tr>
+            <tr>
+                <th>Volume</th>
+                <td th:text="${ticker.volume}"></td>
+            </tr>
+        </table>
+    </div>
+    <a href="/binance" class="btn btn-primary">Back to Dashboard</a>
+</div>
+</body>
+</html>

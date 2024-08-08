@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cancel Order Result</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Cancel Order Result</h1>
+    <div th:if="${cancelResult}">
+        <p class="alert alert-success">Order cancelled successfully.</p>
+    </div>
+    <div th:unless="${cancelResult}">
+        <p class="alert alert-danger">Failed to cancel order.</p>
+    </div>
+    <a href="/binance" class="btn btn-primary">Back to Dashboard</a>
+</div>
+</body>
+</html>

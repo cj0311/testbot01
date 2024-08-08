@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Binance API Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Binance API Dashboard</h1>
+
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <a href="/binance/account-info" class="btn btn-primary btn-lg btn-block">Account Info</a>
+        </div>
+        <div class="col-md-4 mb-3">
+            <a href="/binance/ticker" class="btn btn-secondary btn-lg btn-block">Get Ticker</a>
+        </div>
+        <div class="col-md-4 mb-3">
+            <a href="/binance/trades" class="btn btn-info btn-lg btn-block">Trade History</a>
+        </div>
+    </div>
+
+    <h2 class="mt-5 mb-3">Place Order</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Limit Order</h3>
+            <form action="/binance/order/limit" method="post">
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="symbol" placeholder="Symbol (e.g., BTC/USDT)" required>
+                </div>
+                <div class="mb-3">
+                    <select class="form-control" name="type" required>
+                        <option value="BID">Buy</option>
+                        <option value="ASK">Sell</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <input type="number" class="form-control" name="amount" placeholder="Amount" step="0.00000001" required>
+                </div>
+                <div class="mb-3">
+                    <input type="number" class="form-control" name="price" placeholder="Price" step="0.00000001" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Place Limit Order</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h3>Market Order</h3>
+            <form action="/binance/order/market" method="post">
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="symbol" placeholder="Symbol (e.g., BTC/USDT)" required>
+                </div>
+                <div class="mb-3">
+                    <select class="form-control" name="type" required>
+                        <option value="BID">Buy</option>
+                        <option value="ASK">Sell</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <input type="number" class="form-control" name="amount" placeholder="Amount" step="0.00000001" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Place Market Order</button>
+            </form>
+        </div>
+    </div>
+
+    <h2 class="mt-5 mb-3">Cancel Order</h2>
+    <form action="/binance/order/cancel" method="post">
+        <div class="mb-3">
+            <input type="text" class="form-control" name="orderId" placeholder="Order ID" required>
+        </div>
+        <button type="submit" class="btn btn-danger">Cancel Order</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Information</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Account Information</h1>
+    <div th:if="${accountInfo}">
+        <h2>Wallet</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Currency</th>
+                <th>Balance</th>
+                <th>Available</th>
+                <th>Frozen</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="balance : ${accountInfo.wallet.balances}">
+                <td th:text="${balance.currency}"></td>
+                <td th:text="${balance.total}"></td>
+                <td th:text="${balance.available}"></td>
+                <td th:text="${balance.frozen}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:unless="${accountInfo}">
+        <p>Unable to retrieve account information.</p>
+    </div>
+    <a href="/binance" class="btn btn-primary">Back to Dashboard</a>
+</div>
+</body>
+</html>

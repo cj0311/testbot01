@@ -5,8 +5,8 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-@Entity
-@Table(name = "trading_view_alerts")
+//@Entity
+//@Table(name = "trading_view_alerts")
 public class TradingViewAlert {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

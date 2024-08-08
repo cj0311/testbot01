@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Trade History</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Trade History</h1>
+    <table class="table" th:if="${trades}">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Instrument</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Price</th>
+            <th>Fee</th>
+            <th>Time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="trade : ${trades.userTrades}">
+            <td th:text="${trade.id}"></td>
+            <td th:text="${trade.instrument}"></td>
+            <td th:text="${trade.type}"></td>
+            <td th:text="${trade.originalAmount}"></td>
+            <td th:text="${trade.price}"></td>
+            <td th:text="${trade.feeAmount}"></td>
+            <td th:text="${#dates.format(trade.timestamp, 'yyyy-MM-dd HH:mm:ss')}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div th:unless="${trades}">
+        <p>No trade history available.</p>
+    </div>
+    <a href="/binance" class="btn btn-primary">Back to Dashboard</a>
+</div>
+</body>
+</html>
